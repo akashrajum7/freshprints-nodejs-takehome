@@ -114,6 +114,8 @@ routes.post(
 
       // Parse the apparel.json file
       const apparel: Apparel[] = JSON.parse(data);
+      let cheapestApparel: Apparel[] = [];
+      let totalPrice: number = 0;
 
       // Loop through the order and find the cheapest apparel that can fulfill the order
       orders.forEach((item: Order) => {
@@ -135,30 +137,11 @@ routes.post(
 
         // Update the total price
         totalPrice += filteredApparel[0].price * item.quantity;
-
-        // Update the stock in the apparel.json file
-        const apparelIndex = apparel.findIndex(
-          (apparel: Apparel) =>
-            apparel.code === filteredApparel[0].code &&
-            apparel.size === filteredApparel[0].size &&
-            apparel.quality === filteredApparel[0].quality
-        );
-        apparel[apparelIndex].stock -= item.quantity;
-
-        // Write the updated apparel.json file
-        fs.writeFile(
-          "apparel.json",
-          JSON.stringify(apparel, null, 2),
-          (err: any) => {
-            if (err) {
-              return res.status(500).json({ message: "Server error" });
-            }
-          }
-        );
-
-        // Return the total price
-        return res.status(200).json({ totalPrice });
+        // Update the cheapest apparel
+        cheapestApparel.push(filteredApparel[0]);
       });
+      // Return the total price
+      return res.status(200).json({ totalPrice, apparel: cheapestApparel });
     });
   }
 );
