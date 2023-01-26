@@ -1,3 +1,7 @@
+## Installation
+
+Run `npm install` to install all the dependencies locally
+
 ## Dev
 
 Run `npm run dev` to run the developement version of the project
