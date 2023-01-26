@@ -14,9 +14,16 @@
     "size": "M"
   },
   {
-    "stock": 500,
+    "stock": 300,
     "quality": 5,
     "price": 60,
+    "code": "3",
+    "size": "S"
+  },
+  {
+    "stock": 297,
+    "quality": 3,
+    "price": 40,
     "code": "3",
     "size": "S"
   }

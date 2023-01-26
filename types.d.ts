@@ -5,3 +5,10 @@ export interface Apparel {
   code: string;
   size: string;
 }
+
+export interface Order {
+  code: string;
+  size: string;
+  quantity: number;
+  quality: number;
+}

@@ -1,8 +1,9 @@
 import { Router, Request, Response } from "express";
-const routes: Router = Router();
 import { body, validationResult } from "express-validator";
 import fs from "fs";
 import { Apparel } from "../types";
+
+const routes: Router = Router();
 
 routes.get("/", (req: Request, res: Response) => {
   res.json({ message: "Hello Vendor!" });
@@ -50,7 +51,10 @@ routes.patch(
       const apparel: Apparel[] = JSON.parse(data);
 
       const apparelIndex = apparel.findIndex(
-        (apparel: Apparel) => apparel.code === code && apparel.size === size
+        (apparel: Apparel) =>
+          apparel.code === code &&
+          apparel.size === size &&
+          apparel.quality === quality
       );
 
       if (apparelIndex === -1) {
@@ -122,7 +126,8 @@ routes.patch(
         const apparelIndex = apparelList.findIndex(
           (apparelList: Apparel) =>
             apparelList.code === apparel?.code &&
-            apparelList.size === apparel?.size
+            apparelList.size === apparel?.size &&
+            apparelList.quality === apparel?.quality
         );
 
         if (apparelIndex === -1) {
