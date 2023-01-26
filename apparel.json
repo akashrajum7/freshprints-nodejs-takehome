@@ -1,0 +1,23 @@
+[
+  {
+    "stock": 100,
+    "quality": 1,
+    "price": 10,
+    "code": "1",
+    "size": "S"
+  },
+  {
+    "stock": 200,
+    "quality": 2,
+    "price": 20,
+    "code": "2",
+    "size": "M"
+  },
+  {
+    "stock": 400,
+    "quality": 3,
+    "price": 50,
+    "code": "3",
+    "size": "S"
+  }
+]
